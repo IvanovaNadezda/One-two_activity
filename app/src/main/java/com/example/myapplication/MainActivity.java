@@ -15,48 +15,20 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btn, btn2;
-    private EditText ed;
+    private Button btn2, btn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn = findViewById(R.id.button);
-        btn.setOnClickListener(this);
         btn2 = findViewById(R.id.button2);
         btn2.setOnClickListener(this);
-        ed = findViewById(R.id.editText);
     }
-
-    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if(result.getResultCode() == InfoActivity.INFOACTIVITY_CODE) {
-                        ed.setText(result.getData().getStringExtra("ppp"));
-                    }
-                }
-            }
-    );
-
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.button){
-            //Открываем гугл
-            String url = "https://google.com";
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(url));
-            startActivity(intent);
-        }
-        else {
-            //Явное намерение
-            //Переход на другую активность
-            Intent intent = new Intent(getApplicationContext(),InfoActivity.class);
-            intent.putExtra("ccc",ed.getText().toString());
-            //startActivity(intent);
-            someActivityResultLauncher.launch(intent);
-        }
+        //Явное намерение
+        //Переход на другую активность
+        Intent intent = new Intent(getApplicationContext(),InfoActivity.class);
+        startActivity(intent);
     }
 }

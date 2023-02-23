@@ -11,30 +11,19 @@ import android.widget.TextView;
 
 public class InfoActivity extends AppCompatActivity {
 
-    private TextView tv;
+
     private Button btn3;
-    private EditText ed3;
-    public static final int INFOACTIVITY_CODE =300;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
-        tv = findViewById(R.id.textView);
-        btn3 = findViewById(R.id.button3);
-        ed3 = findViewById(R.id.editText3);
-
-        Bundle bundle = getIntent().getExtras(); // может быть нулл
-        if(bundle != null){
-            tv.setText(bundle.getString("ccc"));
-        }
+        btn3 = findViewById(R.id.button4);
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.putExtra("ppp",ed3.getText().toString());
-                setResult(INFOACTIVITY_CODE,intent);
                 finish();
 
             }
